@@ -1,7 +1,7 @@
 //packages
 const express = require("express");
 const corsMiddleWare = require("cors");
-
+require("dotenv").config();
 //routers
 const authRouter = require("./routers/auth");
 

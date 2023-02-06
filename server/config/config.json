@@ -1,6 +1,6 @@
 {
   "development": {
-    "url": "postgres://whxdbsac:N9GXTpYlmI3lLH_q9AvUpsSj8Q5t8CC_@hattie.db.elephantsql.com/whxdbsac",
+    "use_env_variable": "DATABASE_URL_DEV",
     "dialect": "postgres"
   },
   "test": {
