@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { selectToken } from "../store/user/selectors";
+import { selectToken, selectUser } from "../store/user/selectors";
 import { logOut } from "../store/user/slice";
 
 export const Navigation = () => {
@@ -8,11 +8,15 @@ export const Navigation = () => {
   const dispatch = useDispatch();
 
   const token = useSelector(selectToken);
+  const user = useSelector(selectUser);
 
   return (
     <div>
       {token ? (
-        <button onClick={() => dispatch(logOut())}>Logout</button>
+        <div>
+          <h1>Hello, {user.name}</h1>
+          <button onClick={() => dispatch(logOut())}>Logout</button>
+        </div>
       ) : (
         <div>
           <button onClick={() => navigate("/signup")}>SignUp</button>
