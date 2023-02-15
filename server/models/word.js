@@ -11,13 +11,14 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       word.belongsTo(models.vocabulary, { foreignKey: "vocabularyId" });
       word.belongsTo(models.category, { foreignKey: "categoryId" });
+      word.belongsTo(models.language, { foreignKey: "languageId" });
     }
   }
   word.init(
     {
       foreign: { type: DataTypes.STRING, allowNull: false },
       native: { type: DataTypes.STRING, allowNull: false },
-      progress: { type: DataTypes.INTEGER, allowNull: false },
+      progress: { type: DataTypes.INTEGER, allowNull: false, defaultValue: 0 },
     },
     {
       sequelize,

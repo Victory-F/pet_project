@@ -2,25 +2,17 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable("words", {
+    await queryInterface.createTable("languages", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      foreign: {
+      title: {
         allowNull: false,
+        unique: true,
         type: Sequelize.STRING,
-      },
-      native: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      progress: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        defaultValue: 0,
       },
       createdAt: {
         allowNull: false,
@@ -35,6 +27,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable("words");
+    await queryInterface.dropTable("languages");
   },
 };

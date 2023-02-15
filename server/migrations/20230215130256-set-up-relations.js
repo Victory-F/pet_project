@@ -32,10 +32,21 @@ module.exports = {
       onUpdate: "CASCADE",
       onDelete: "CASCADE",
     });
+    await queryInterface.addColumn("words", "languageId", {
+      type: Sequelize.INTEGER,
+      allowNull: false,
+      references: {
+        model: "languages",
+        key: "id",
+      },
+      onUpdate: "CASCADE",
+      onDelete: "CASCADE",
+    });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.removeColumn("vocabularies", "userId");
     await queryInterface.removeColumn("words", "vocabularyId");
     await queryInterface.removeColumn("words", "categoryId");
+    await queryInterface.removeColumn("words", "languageId");
   },
 };
