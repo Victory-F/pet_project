@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      vocabulary.belongsTo(models.user, { foreignKey: "userId" });
+      vocabulary.hasMany(models.word);
     }
   }
   vocabulary.init(

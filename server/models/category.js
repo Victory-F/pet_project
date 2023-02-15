@@ -1,5 +1,6 @@
 "use strict";
 const { Model } = require("sequelize");
+const word = require("./word");
 module.exports = (sequelize, DataTypes) => {
   class category extends Model {
     /**
@@ -9,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      category.hasMany(models.word);
     }
   }
   category.init(
