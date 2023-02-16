@@ -7,7 +7,7 @@ const authMiddleware = require("../auth/middleware");
 const router = new Router();
 
 // Get All Vocabularies
-router.get("/vocabularies", authMiddleware, async (req, res, next) => {
+router.get("/", authMiddleware, async (req, res, next) => {
   try {
     // user making request
     const userId = parseInt(req.user.dataValues.id);
@@ -27,3 +27,4 @@ router.get("/vocabularies", authMiddleware, async (req, res, next) => {
     next(e);
   }
 });
+module.exports = router;

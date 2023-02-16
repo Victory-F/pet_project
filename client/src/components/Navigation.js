@@ -15,6 +15,9 @@ export const Navigation = () => {
       {token ? (
         <div>
           <h1>Hello, {user.name}</h1>
+          <button onClick={() => navigate("/vocabularies")}>
+            Vocabularies
+          </button>
           <button onClick={() => dispatch(logOut())}>Logout</button>
         </div>
       ) : (
