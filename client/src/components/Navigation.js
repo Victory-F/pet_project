@@ -14,7 +14,7 @@ export const Navigation = () => {
     <div>
       {token ? (
         <div>
-          <h1>Hello, {user.name}</h1>
+          <h1>Hello, {user && user.name}</h1>
           <button onClick={() => navigate("/vocabularies")}>
             Vocabularies
           </button>

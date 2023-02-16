@@ -13,7 +13,9 @@ router.get("/", authMiddleware, async (req, res, next) => {
     const userId = parseInt(req.user.dataValues.id);
 
     // find all vocabularies
-    const allVocabularies = await vocabulary.findAll({ where: userId });
+    const allVocabularies = await vocabulary.findAll({
+      where: { userId: userId },
+    });
 
     // vocabularies exist check
     if (!allVocabularies) {
