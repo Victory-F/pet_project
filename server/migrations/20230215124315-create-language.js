@@ -14,6 +14,11 @@ module.exports = {
         unique: true,
         type: Sequelize.STRING,
       },
+      code: {
+        allowNull: false,
+        unique: true,
+        type: Sequelize.STRING,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,

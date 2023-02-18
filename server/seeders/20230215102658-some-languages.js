@@ -8,9 +8,11 @@ module.exports = {
       [
         {
           title: "English",
+          code: "en",
         },
         {
           title: "Dutch",
+          code: "nl",
         },
       ],
       {}
