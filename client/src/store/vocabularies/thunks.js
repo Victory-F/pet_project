@@ -1,5 +1,5 @@
 import axios from "axios";
-import { vocabulariesFetched } from "./slice";
+import { vocabulariesFetched, vocabularyFetched } from "./slice";
 import { apiUrl } from "../../config/constants";
 import { selectToken } from "../user/selectors";
 
@@ -12,6 +12,20 @@ export const fetchVocabularies = async (dispatch, getState) => {
     });
     const vocabularies = response.data;
     dispatch(vocabulariesFetched(vocabularies));
+  } catch (e) {
+    console.log(e.message);
+  }
+};
+
+export const fetchVocabulary = (vocabularyId) => async (dispatch, getState) => {
+  const token = selectToken(getState());
+  if (token === null) return;
+  try {
+    const response = await axios.get(`${apiUrl}/vocabularies/${vocabularyId}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    const vocabulary = response.data;
+    dispatch(vocabularyFetched(vocabulary));
   } catch (e) {
     console.log(e.message);
   }

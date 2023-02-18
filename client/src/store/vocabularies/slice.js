@@ -2,8 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   loading: false,
-  allVocabularies: [],
-  vocabulary: {},
+  allVocabularies: null,
+  vocabulary: null,
 };
 
 export const vocabulariesSlice = createSlice({
@@ -15,12 +15,17 @@ export const vocabulariesSlice = createSlice({
     },
     vocabulariesFetched: (state, action) => {
       state.allVocabularies = action.payload;
-      state.vocabulary = {};
+      state.vocabulary = null;
+      state.loading = false;
+    },
+    vocabularyFetched: (state, action) => {
+      state.vocabulary = action.payload;
       state.loading = false;
     },
   },
 });
 
-export const { startLoading, vocabulariesFetched } = vocabulariesSlice.actions;
+export const { startLoading, vocabulariesFetched, vocabularyFetched } =
+  vocabulariesSlice.actions;
 
 export default vocabulariesSlice.reducer;

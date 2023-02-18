@@ -3,7 +3,10 @@ import { selectVocabularies } from "../store/vocabularies/selectors";
 import { selectToken } from "../store/user/selectors";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchVocabularies } from "../store/vocabularies/thunks";
+import {
+  fetchVocabularies,
+  fetchVocabulary,
+} from "../store/vocabularies/thunks";
 
 export const VocabulariesPage = () => {
   const token = useSelector(selectToken);
@@ -22,7 +25,12 @@ export const VocabulariesPage = () => {
           vocabularies.map((v) => (
             <div key={v.id}>
               <h2>{v.title}</h2>{" "}
-              <button onClick={() => navigate("/vocabulary")}>
+              <button
+                onClick={() => {
+                  dispatch(fetchVocabulary(v.id));
+                  navigate("/vocabulary");
+                }}
+              >
                 Open Vocabulary
               </button>
             </div>

@@ -1,9 +1,8 @@
 const { Router } = require("express");
 
-const { vocabulary, language } = require("../models");
+const { vocabulary, language, word, category } = require("../models");
 
 const authMiddleware = require("../auth/middleware");
-const word = require("../models/word");
 
 const router = new Router();
 
