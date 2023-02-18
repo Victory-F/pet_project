@@ -1,6 +1,6 @@
 const { Router } = require("express");
 
-const { vocabulary, user } = require("../models");
+const { vocabulary, language } = require("../models");
 
 const authMiddleware = require("../auth/middleware");
 
@@ -15,6 +15,12 @@ router.get("/", authMiddleware, async (req, res, next) => {
     // find all vocabularies
     const allVocabularies = await vocabulary.findAll({
       where: { userId: userId },
+      include: [
+        {
+          model: language,
+          attributes: ["title"],
+        },
+      ],
     });
 
     // vocabularies exist check
