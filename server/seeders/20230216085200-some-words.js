@@ -12,7 +12,6 @@ module.exports = {
           progress: 20,
           vocabularyId: 3,
           categoryId: 1,
-          languageId: 1,
         },
         {
           foreign: "dog",
@@ -20,7 +19,6 @@ module.exports = {
           progress: 40,
           vocabularyId: 3,
           categoryId: 1,
-          languageId: 1,
         },
         {
           foreign: "bird",
@@ -28,7 +26,6 @@ module.exports = {
           progress: 60,
           vocabularyId: 3,
           categoryId: 1,
-          languageId: 1,
         },
         {
           foreign: "horse",
@@ -36,7 +33,6 @@ module.exports = {
           progress: 80,
           vocabularyId: 3,
           categoryId: 1,
-          languageId: 1,
         },
         {
           foreign: "animal",
@@ -44,7 +40,6 @@ module.exports = {
           progress: 0,
           vocabularyId: 3,
           categoryId: 1,
-          languageId: 1,
         },
         {
           foreign: "rabbit",
@@ -52,7 +47,6 @@ module.exports = {
           progress: 0,
           vocabularyId: 3,
           categoryId: 1,
-          languageId: 1,
         },
         {
           foreign: "bread",
@@ -60,7 +54,6 @@ module.exports = {
           progress: 20,
           vocabularyId: 3,
           categoryId: 3,
-          languageId: 1,
         },
         {
           foreign: "butter",
@@ -68,7 +61,6 @@ module.exports = {
           progress: 20,
           vocabularyId: 3,
           categoryId: 3,
-          languageId: 1,
         },
         {
           foreign: "jam",
@@ -76,7 +68,6 @@ module.exports = {
           progress: 40,
           vocabularyId: 3,
           categoryId: 3,
-          languageId: 1,
         },
         {
           foreign: "honey",
@@ -84,7 +75,6 @@ module.exports = {
           progress: 20,
           vocabularyId: 3,
           categoryId: 3,
-          languageId: 1,
         },
         {
           foreign: "cheese",
@@ -92,7 +82,6 @@ module.exports = {
           progress: 20,
           vocabularyId: 3,
           categoryId: 3,
-          languageId: 1,
         },
       ],
       {}

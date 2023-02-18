@@ -11,7 +11,6 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       word.belongsTo(models.vocabulary, { foreignKey: "vocabularyId" });
       word.belongsTo(models.category, { foreignKey: "categoryId" });
-      word.belongsTo(models.language, { foreignKey: "languageId" });
     }
   }
   word.init(

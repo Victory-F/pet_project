@@ -10,6 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       vocabulary.belongsTo(models.user, { foreignKey: "userId" });
+      vocabulary.belongsTo(models.language, { foreignKey: "languageId" });
       vocabulary.hasMany(models.word);
     }
   }

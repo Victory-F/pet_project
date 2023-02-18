@@ -9,18 +9,22 @@ module.exports = {
         {
           title: "My English/Spanish Vocabulary",
           userId: 1,
+          languageId: 1,
         },
         {
           title: "My English/French Vocabulary",
           userId: 1,
+          languageId: 1,
         },
         {
           title: "My English/Italian Vocabulary",
           userId: 2,
+          languageId: 1,
         },
         {
           title: "My Dutch/Ukrainian Vocabulary",
           userId: 3,
+          languageId: 2,
         },
       ],
       {}
