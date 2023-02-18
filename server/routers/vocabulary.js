@@ -18,7 +18,7 @@ router.get("/", authMiddleware, async (req, res, next) => {
       include: [
         {
           model: language,
-          attributes: ["title"],
+          attributes: ["title", "code"],
         },
       ],
     });
@@ -56,6 +56,16 @@ router.get("/:id", authMiddleware, async (req, res, next) => {
         {
           model: category,
           attributes: ["title"],
+        },
+        {
+          model: vocabulary,
+          attributes: ["title"],
+          include: [
+            {
+              model: language,
+              attributes: ["title", "code"],
+            },
+          ],
         },
       ],
     });
