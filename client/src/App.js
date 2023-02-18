@@ -3,7 +3,13 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUserWithStoredToken } from "./store/user/thunks";
 import { Routes, Route } from "react-router-dom";
-import { HomePage, Login, SignUp, VocabulariesPage } from "./pages";
+import {
+  HomePage,
+  Login,
+  SignUp,
+  VocabulariesPage,
+  VocabularyPage,
+} from "./pages";
 import { Navigation } from "./components";
 
 function App() {
@@ -21,6 +27,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="/vocabularies" element={<VocabulariesPage />} />
+        <Route path="/vocabulary" element={<VocabularyPage />} />
       </Routes>
     </div>
   );
