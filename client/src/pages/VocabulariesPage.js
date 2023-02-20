@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectVocabularies } from "../store/vocabularies/selectors";
 import { selectToken } from "../store/user/selectors";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   fetchVocabularies,
@@ -17,6 +17,12 @@ export const VocabulariesPage = () => {
   }, [dispatch]);
   const vocabularies = useSelector(selectVocabularies);
 
+  const [title, setTitle] = useState("");
+  const [language, setLanguage] = useState("");
+
+  const addVocabulary = (e) => {
+    e.preventDeafult();
+  };
   return (
     token && (
       <div>
@@ -35,6 +41,25 @@ export const VocabulariesPage = () => {
               </button>
             </div>
           ))}
+
+        <form onSubmit={addVocabulary}>
+          Add a Vocabulary
+          <input
+            placeholder="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            required
+          />
+          <br />
+          <input
+            placeholder="language"
+            value={language}
+            onChange={(e) => setLanguage(e.target.value)}
+            required
+          />
+          <br />
+          <button type="submit">Create Vocabulary</button>
+        </form>
       </div>
     )
   );
