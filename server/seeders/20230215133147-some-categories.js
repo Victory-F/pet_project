@@ -7,13 +7,13 @@ module.exports = {
       "categories",
       [
         {
-          title: "Animals",
+          title: "animals",
         },
         {
-          title: "Nature",
+          title: "nature",
         },
         {
-          title: "Food",
+          title: "food",
         },
       ],
       {}
