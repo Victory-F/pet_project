@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   vocabulary.init(
     {
-      title: { type: DataTypes.STRING, allowNull: false, unique: true },
+      title: { type: DataTypes.STRING, allowNull: false },
     },
     {
       sequelize,
