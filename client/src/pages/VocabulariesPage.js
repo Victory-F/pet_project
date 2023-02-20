@@ -4,6 +4,7 @@ import { selectToken } from "../store/user/selectors";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
+  addVocabulary,
   fetchVocabularies,
   fetchVocabulary,
 } from "../store/vocabularies/thunks";
@@ -20,8 +21,10 @@ export const VocabulariesPage = () => {
   const [title, setTitle] = useState("");
   const [language, setLanguage] = useState("");
 
-  const addVocabulary = (e) => {
-    e.preventDeafult();
+  const addVocabularyForm = (e) => {
+    e.preventDefault();
+
+    dispatch(addVocabulary(title, language));
   };
   return (
     token && (
@@ -41,9 +44,10 @@ export const VocabulariesPage = () => {
               </button>
             </div>
           ))}
-
-        <form onSubmit={addVocabulary}>
+        <br />
+        <form onSubmit={addVocabularyForm}>
           Add a Vocabulary
+          <br />
           <input
             placeholder="title"
             value={title}

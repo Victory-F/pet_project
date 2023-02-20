@@ -1,6 +1,9 @@
 const { Router } = require("express");
 
-const { vocabulary, language, word, category } = require("../models");
+const Vocabulary = require("../models/").vocabulary;
+const Language = require("../models/").language;
+const Category = require("../models/").category;
+const Word = require("../models/").word;
 
 const authMiddleware = require("../auth/middleware");
 
@@ -13,11 +16,11 @@ router.get("/", authMiddleware, async (req, res, next) => {
     const userId = parseInt(req.user.dataValues.id);
 
     // find all vocabularies
-    const allVocabularies = await vocabulary.findAll({
+    const allVocabularies = await Vocabulary.findAll({
       where: { userId: userId },
       include: [
         {
-          model: language,
+          model: Language,
           attributes: ["title", "code"],
         },
       ],
@@ -40,7 +43,7 @@ router.get("/:id", authMiddleware, async (req, res, next) => {
     const vocabularyId = parseInt(req.params.id);
 
     //find vocabulary by id where user is owner
-    const vocabById = await vocabulary.findByPk(vocabularyId, {
+    const vocabById = await Vocabulary.findByPk(vocabularyId, {
       where: { userId: userId },
     });
 
@@ -50,19 +53,19 @@ router.get("/:id", authMiddleware, async (req, res, next) => {
     }
 
     // find all words in vocabulary
-    const allWordsInVocab = await word.findAll({
+    const allWordsInVocab = await Word.findAll({
       where: { vocabularyId: vocabularyId },
       include: [
         {
-          model: category,
+          model: Category,
           attributes: ["title"],
         },
         {
-          model: vocabulary,
+          model: Vocabulary,
           attributes: ["title"],
           include: [
             {
-              model: language,
+              model: Language,
               attributes: ["title", "code"],
             },
           ],
@@ -84,21 +87,21 @@ router.post("/", authMiddleware, async (req, res, next) => {
     const userId = parseInt(req.user.dataValues.id);
 
     // title and language of vocabulary sent by user
-    const { vocabTitle, vocabLanguage } = req.body;
+    const { title, language } = req.body;
 
     //check for parameters provided
-    if (!vocabTitle || !vocabLanguage) {
+    if (!title || !language) {
       return res.status(400).send("Missing parameters");
     }
 
     //find all vocabularies of the user
-    const allVocabularies = await vocabulary.findAll({
+    const allVocabularies = await Vocabulary.findAll({
       where: { userId: userId },
     });
 
     //find vocabulary with the same name sent by user
     const vocabularyExists = allVocabularies.find(
-      (v) => v.title.toLowerCase() === vocabTitle.toLowerCase
+      (v) => v.title.toLowerCase() === title.toLowerCase
     );
 
     //check the if name of vocabulary sent by user exists
@@ -107,8 +110,8 @@ router.post("/", authMiddleware, async (req, res, next) => {
     }
 
     //find the language in the database
-    const languageExists = language.findOne({
-      where: { title: vocabLanguage },
+    const languageExists = await Language.findOne({
+      where: { title: language },
     });
 
     //check if langiage exists
@@ -116,8 +119,8 @@ router.post("/", authMiddleware, async (req, res, next) => {
       return res.status(400).send("Language not found");
     } else {
       //create vocabulary
-      const vocabularyAdded = await vocabulary.create({
-        vocabTitle,
+      const vocabularyAdded = await Vocabulary.create({
+        title,
         userId,
         languageId: languageExists.id,
       });
