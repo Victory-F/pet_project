@@ -7,12 +7,24 @@ module.exports = {
       "languages",
       [
         {
-          title: "English",
-          code: "en",
+          title: "English (United States)",
+          code: "en-US",
         },
         {
-          title: "Dutch",
-          code: "nl",
+          title: "English (United Kingdom)",
+          code: "en-GB",
+        },
+        {
+          title: "Spanish (Spain)",
+          code: "es-ES",
+        },
+        {
+          title: "Dutch (Netherlands)",
+          code: "nl-NL",
+        },
+        {
+          title: "Ukrainian (Ukraine)",
+          code: "uk-UA",
         },
       ],
       {}
