@@ -22,10 +22,17 @@ export const vocabulariesSlice = createSlice({
       state.vocabulary = action.payload;
       state.loading = false;
     },
+    updateVocabulariesAdd: (state, action) => {
+      state.allVocabularies = [...state.allVocabularies, action.payload];
+    },
   },
 });
 
-export const { startLoading, vocabulariesFetched, vocabularyFetched } =
-  vocabulariesSlice.actions;
+export const {
+  startLoading,
+  vocabulariesFetched,
+  vocabularyFetched,
+  updateVocabulariesAdd,
+} = vocabulariesSlice.actions;
 
 export default vocabulariesSlice.reducer;
